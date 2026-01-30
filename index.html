@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Платон Бутузов - Обо мне</title>
+      <style>
+            * {
+                  margin: 0;
+                  padding: 0;
+                  box-sizing: border-box;
+                  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+
+            body {
+                  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+                  color: #e6e6e6;
+                  min-height: 100vh;
+                  padding: 20px;
+                  line-height: 1.6;
+            }
+
+            .container {
+                  max-width: 1100px;
+                  margin: 0 auto;
+                  background-color: rgba(25, 25, 35, 0.85);
+                  border-radius: 20px;
+                  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+                  padding: 30px;
+                  border: 1px solid #2a2a3e;
+            }
+
+            h1 {
+                  font-size: 3.5rem;
+                  text-align: center;
+                  margin-bottom: 10px;
+                  background: linear-gradient(90deg, #00dbde, #fc00ff);
+                  -webkit-background-clip: text;
+                  background-clip: text;
+                  color: transparent;
+                  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+                  padding-bottom: 10px;
+                  border-bottom: 2px solid #2a2a3e;
+            }
+
+            .intro {
+                  font-size: 1.4rem;
+                  margin-bottom: 30px;
+                  text-align: center;
+                  color: #b0b0c0;
+                  padding: 15px;
+                  background-color: rgba(40, 40, 60, 0.4);
+                  border-radius: 10px;
+                  border-left: 4px solid #00dbde;
+            }
+
+            .intro b {
+                  color: #fc00ff;
+                  font-weight: bold;
+            }
+
+            .chat-section {
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  margin: 40px 0;
+            }
+
+            .chat-container {
+                  display: flex;
+                  align-items: flex-start;
+                  max-width: 800px;
+                  width: 100%;
+                  gap: 30px;
+                  margin-top: 30px;
+            }
+
+            .shrek-img {
+                  width: 150px;
+                  height: 150px;
+                  border-radius: 50%;
+                  border: 5px solid #00dbde;
+                  box-shadow: 0 0 15px rgba(0, 219, 222, 0.5);
+                  flex-shrink: 0;
+            }
+
+            .messages-container {
+                  flex: 1;
+                  display: flex;
+                  flex-direction: column;
+                  gap: 15px;
+            }
+
+            .message {
+                  padding: 15px;
+                  border-radius: 20px;
+                  max-width: 80%;
+                  position: relative;
+                  animation: slideIn 0.5s ease;
+                  opacity: 0;
+                  transform: translateX(-20px);
+            }
+
+            .message-left {
+                  background: linear-gradient(135deg, #2a2a3e, #1a1a2e);
+                  align-self: flex-start;
+                  border-bottom-left-radius: 5px;
+                  margin-right: auto;
+                  border: 1px solid #3a3a5e;
+            }
+
+            .message-right {
+                  background: linear-gradient(135deg, #2a2a3e, #16213e);
+                  align-self: flex-end;
+                  border-bottom-right-radius: 5px;
+                  margin-left: auto;
+                  border: 1px solid #3a3a5e;
+                  transform: translateX(20px);
+            }
+
+            .message-text {
+                  font-size: 1.2rem;
+                  color: #e6e6e6;
+            }
+
+            .message-sender {
+                  font-size: 0.9rem;
+                  color: #888;
+                  margin-top: 5px;
+                  font-style: italic;
+            }
+
+            .games-section {
+                  margin: 40px 0;
+            }
+
+            .games-section h2 {
+                  font-size: 2.2rem;
+                  margin-bottom: 20px;
+                  color: #00dbde;
+                  text-align: center;
+            }
+
+            .games-list {
+                  list-style-type: none;
+                  display: grid;
+                  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                  gap: 15px;
+            }
+
+            .games-list li {
+                  background: linear-gradient(135deg, #2a2a3e, #1a1a2e);
+                  padding: 15px;
+                  border-radius: 10px;
+                  font-size: 1.2rem;
+                  border-left: 4px solid #fc00ff;
+                  transition: transform 0.3s ease, box-shadow 0.3s ease;
+                  display: flex;
+                  align-items: center;
+                  gap: 10px;
+            }
+
+            .games-list li:hover {
+                  transform: translateY(-5px);
+                  box-shadow: 0 5px 15px rgba(252, 0, 255, 0.3);
+            }
+
+            .links-section {
+                  margin: 40px 0;
+                  display: flex;
+                  flex-wrap: wrap;
+                  justify-content: center;
+                  gap: 40px;
+            }
+
+            .link-card {
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  background: linear-gradient(135deg, #2a2a3e, #1a1a2e);
+                  padding: 20px;
+                  border-radius: 15px;
+                  width: 200px;
+                  text-decoration: none;
+                  color: inherit;
+                  transition: transform 0.3s ease, box-shadow 0.3s ease;
+                  border: 1px solid #2a2a3e;
+            }
+
+            .link-card:hover {
+                  transform: translateY(-10px);
+                  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+            }
+
+            .link-card img {
+                  width: 80px;
+                  height: 80px;
+                  border-radius: 50%;
+                  margin-bottom: 15px;
+                  border: 3px solid;
+            }
+
+            .steam-link img {
+                  border-color: #00adee;
+            }
+
+            .twitter-link img {
+                  border-color: #000000;
+            }
+
+            .link-title {
+                  font-size: 1.8rem;
+                  font-weight: bold;
+                  margin-top: 10px;
+            }
+
+            .steam-link .link-title {
+                  color: #00adee;
+            }
+
+            .twitter-link .link-title {
+                  color: #000000;
+            }
+
+            footer {
+                  text-align: center;
+                  margin-top: 40px;
+                  padding-top: 20px;
+                  border-top: 1px solid #2a2a3e;
+                  color: #707080;
+                  font-size: 0.9rem;
+            }
+
+            @media (max-width: 768px) {
+                  .container {
+                        padding: 20px;
+                  }
+
+                  h1 {
+                        font-size: 2.5rem;
+                  }
+
+                  .intro {
+                        font-size: 1.2rem;
+                  }
+
+                  .chat-container {
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 20px;
+                  }
+
+                  .shrek-img {
+                        width: 120px;
+                        height: 120px;
+                  }
+
+                  .games-list {
+                        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                  }
+
+                  .links-section {
+                        gap: 20px;
+                  }
+            }
+
+            @media (max-width: 480px) {
+                  h1 {
+                        font-size: 2rem;
+                  }
+
+                  .intro {
+                        font-size: 1rem;
+                  }
+
+                  .games-list {
+                        grid-template-columns: 1fr;
+                  }
+
+                  .link-card {
+                        width: 100%;
+                        max-width: 250px;
+                  }
+
+                  .message {
+                        max-width: 100%;
+                  }
+            }
+      </style>
+</head>
+
+<body>
+      <div class="container">
+            <h1>Бутузов Платон</h1>
+
+            <p class="intro">Родился в Москве, живу в Казани, 16 лет. То есть родился <b>13.10.2009</b></p>
+
+            <div class="chat-section">
+                  <div class="chat-container">
+                        <img src="images/SHREK.png" alt="Шрек" class="shrek-img">
+
+                        <div class="messages-container">
+
+                              <div class="message message-right" id="msg1">
+                                    <div class="message-text">бро, что с авой?</div>
+                                    <div class="message-sender">SiveIx</div>
+                              </div>
+
+                              <div class="message message-left" id="msg2">
+                                    <div class="message-text">ЫГУ ЪХА ЫгА</div>
+                                    <div class="message-sender">Платон</div>
+                              </div>
+
+                              <div class="message message-right" id="msg3">
+                                    <div class="message-text">Понял, братан, держись!</div>
+                                    <div class="message-sender">SiveIx</div>
+                              </div>
+                        </div>
+                  </div>
+            </div>
+
+            <div class="games-section">
+                  <h2>Любимые игры:</h2>
+                  <ol class="games-list">
+                        <li>Mafia II</li>
+                        <li>Dota 2</li>
+                        <li>Minecraft</li>
+                        <li>Hollow Knight</li>
+                        <li>Don't Starve Together</li>
+                  </ol>
+            </div>
+
+            <div class="links-section">
+                  <a href="https://steamcommunity.com/profiles/76561199231411241/" class="link-card steam-link"
+                        target="_blank">
+                        <img src="images/steam.png" alt="Steam">
+                        <span class="link-title">Steam</span>
+                        <p style="text-align: center; margin-top: 10px; color: #a0a0c0;">Мой профиль в Steam</p>
+                  </a>
+
+                  <a href="https://x.com/Cristiano" class="link-card twitter-link" target="_blank">
+                        <img src="images/x.png" alt="Twitter(X)">
+                        <span class="link-title">Twitter(X)</span>
+                        <p style="text-align: center; margin-top: 10px; color: #a0a0c0;">Ссылка на пример</p>
+                  </a>
+            </div>
+
+            <footer>
+                  <p>© 2026 Сайт-визитка Бутузова Платона. Все права на игры принадлежат их правообладателям.</p>
+            </footer>
+      </div>
+
+      <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                  const messages = document.querySelectorAll('.message');
+
+                  messages.forEach((msg, index) => {
+                        msg.style.opacity = '0';
+
+                        setTimeout(() => {
+                              if (msg.classList.contains('message-left')) {
+                                    msg.style.animation = 'slideIn 0.5s ease forwards';
+                              } else {
+                                    msg.style.animation = 'slideInRight 0.5s ease forwards';
+                              }
+
+                              msg.style.opacity = '1';
+                              msg.style.transform = 'translateX(0)';
+                        }, 300 + index * 500); 
+                  });
+
+                  const elements = document.querySelectorAll('.games-list li, .link-card, .shrek-img');
+
+                  elements.forEach((el, index) => {
+                        el.style.opacity = '0';
+                        el.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                              el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                              el.style.opacity = '1';
+                              el.style.transform = 'translateY(0)';
+                        }, 100 + index * 100);
+                  });
+
+
+                  const title = document.querySelector('h1');
+                  title.addEventListener('mouseover', function () {
+                        this.style.background = 'linear-gradient(90deg, #fc00ff, #00dbde)';
+                        this.style.backgroundClip = 'text';
+                  });
+
+                  title.addEventListener('mouseout', function () {
+                        this.style.background = 'linear-gradient(90deg, #00dbde, #fc00ff)';
+                        this.style.backgroundClip = 'text';
+                  });
+
+                  const birthDate = document.querySelector('.intro b');
+                  birthDate.addEventListener('click', function () {
+                        this.style.color = '#00dbde';
+                        this.style.textShadow = '0 0 10px #00dbde';
+
+                        setTimeout(() => {
+                              this.style.color = '#fc00ff';
+                              this.style.textShadow = 'none';
+                        }, 1000);
+                  });
+
+                  addChatControls();
+            });
+      </script>
+</body>
+
+</html>
